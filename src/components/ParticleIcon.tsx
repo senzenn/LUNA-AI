@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { PARTICLE_ANIMATION } from '@/constants/animation';
+import { STYLES } from '@/constants/ui';
 
 interface ParticleIconProps {
   icon: React.ReactNode;
@@ -9,7 +11,7 @@ interface ParticleIconProps {
 }
 
 const ParticleIcon = ({ icon, href }: ParticleIconProps) => {
-  const iconRef = useRef<HTMLDivElement>(null);
+  const iconRef = useRef<HTMLAnchorElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,12 +20,11 @@ const ParticleIcon = ({ icon, href }: ParticleIconProps) => {
     if (!icon || !particles) return;
 
     const createParticles = () => {
-      const numParticles = 10;
       particles.innerHTML = '';
 
-      for (let i = 0; i < numParticles; i++) {
+      for (let i = 0; i < PARTICLE_ANIMATION.NUM_PARTICLES; i++) {
         const particle = document.createElement('div');
-        particle.className = 'absolute w-1 h-1 bg-purple-500 rounded-full opacity-0';
+        particle.className = STYLES.PARTICLE.BASE;
         particles.appendChild(particle);
       }
     };
@@ -32,13 +33,12 @@ const ParticleIcon = ({ icon, href }: ParticleIconProps) => {
       const particleElements = particles.children;
       
       gsap.to(icon, {
-        scale: 1.2,
-        duration: 0.2,
+        scale: PARTICLE_ANIMATION.SCALE_UP,
+        duration: PARTICLE_ANIMATION.SCALE_DURATION,
       });
 
       Array.from(particleElements).forEach((particle, i) => {
         const angle = (i / particleElements.length) * Math.PI * 2;
-        const radius = 20;
         
         gsap.set(particle, {
           opacity: 1,
@@ -47,10 +47,10 @@ const ParticleIcon = ({ icon, href }: ParticleIconProps) => {
         });
 
         gsap.to(particle, {
-          x: Math.cos(angle) * radius,
-          y: Math.sin(angle) * radius,
+          x: Math.cos(angle) * PARTICLE_ANIMATION.PARTICLE_RADIUS,
+          y: Math.sin(angle) * PARTICLE_ANIMATION.PARTICLE_RADIUS,
           opacity: 0,
-          duration: 0.6,
+          duration: PARTICLE_ANIMATION.PARTICLE_DURATION,
           ease: 'power2.out',
         });
       });
@@ -59,7 +59,7 @@ const ParticleIcon = ({ icon, href }: ParticleIconProps) => {
     const resetParticles = () => {
       gsap.to(icon, {
         scale: 1,
-        duration: 0.2,
+        duration: PARTICLE_ANIMATION.SCALE_DURATION,
       });
     };
 
@@ -82,7 +82,6 @@ const ParticleIcon = ({ icon, href }: ParticleIconProps) => {
         target="_blank"
         rel="noopener noreferrer"
         className="block transition-transform duration-200"
-        // @ts-ignore
         ref={iconRef}
       >
         {icon}
