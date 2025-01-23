@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Skull Base -->
+  <path d="M35 10C35 4.477 30.523 0 25 0S15 4.477 15 10v15h20V10z" fill="url(#skull-gradient)"/>
+  <path d="M20 20c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5z" fill="#fff"/>
+  <path d="M30 20c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5z" fill="#fff"/>
+  <path d="M25 35l-5 5h10l-5-5z" fill="url(#skull-gradient)"/>
+  
+  <!-- Text -->
+  <path d="M60 35V15h5l10 15V15h5v20h-5L65 20v15h-5z" fill="url(#text-gradient)"/>
+  <path d="M85 35V15h20v4h-15v4h12v4h-12v4h15v4H85z" fill="url(#text-gradient)"/>
+  <path d="M110 35V15h5v16h15v4h-20z" fill="url(#text-gradient)"/>
+  <path d="M135 35V15h5v20h-5z" fill="url(#text-gradient)"/>
+  <path d="M145 35V15h5l10 15V15h5v20h-5l-10-15v15h-5z" fill="url(#text-gradient)"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="skull-gradient" x1="15" y1="0" x2="35" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9333EA"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="text-gradient" x1="60" y1="15" x2="170" y2="35" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9333EA"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+</svg> 
